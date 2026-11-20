@@ -1,0 +1,69 @@
+{
+	"geode": "5.11.2",
+	"gd": {
+		"win": "2.2081"
+	},
+	"id": "lucasdouge.level-recorder",
+	"name": "Level Recorder",
+	"version": "v1.0.0",
+	"developer": "Lucasdouge",
+	"description": "Record macros and render lag-free videos of your runs, completions included, with optional microphone.",
+	"resources": {
+		"sprites": [
+			"resources/*.png"
+		],
+		"fonts": {
+			"rubik-regular": {
+				"path": "resources/Rubik-Regular.ttf",
+				"size": 30
+			},
+			"rubik-semibold": {
+				"path": "resources/Rubik-SemiBold.ttf",
+				"size": 30
+			}
+		}
+	},
+	"settings": {
+		"ffmpeg-path": {
+			"type": "string",
+			"name": "FFmpeg path",
+			"description": "Path to ffmpeg.exe, or just <cy>ffmpeg</c> if it is on your PATH.",
+			"default": "ffmpeg"
+		},
+		"render-fps": {
+			"type": "int",
+			"name": "Render FPS",
+			"description": "Frame rate of rendered videos.",
+			"default": 60,
+			"min": 30,
+			"max": 240
+		},
+		"codec": {
+			"type": "string",
+			"name": "Video codec",
+			"description": "ffmpeg video encoder. Use an *_nvenc / *_amf / *_qsv encoder for GPU encoding.",
+			"default": "libx264",
+			"one-of": ["libx264", "libx265", "h264_nvenc", "hevc_nvenc", "h264_amf", "h264_qsv"]
+		},
+		"bitrate": {
+			"type": "string",
+			"name": "Video bitrate",
+			"description": "For example <cy>20M</c>.",
+			"default": "20M"
+		},
+		"tail-seconds": {
+			"type": "float",
+			"name": "Completion tail (seconds)",
+			"description": "How long to keep rendering after the level is completed (end screen).",
+			"default": 2.0,
+			"min": 0.0,
+			"max": 10.0
+		},
+		"include-music": {
+			"type": "bool",
+			"name": "Add level music to render",
+			"description": "Muxes the level's song into the video. Sound effects are not captured.",
+			"default": true
+		}
+	}
+}
